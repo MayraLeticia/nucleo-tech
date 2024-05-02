@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="header-title">
+      <div className="header-title" onClick={() => navigate("/home")}>
         <img src={Logo} alt="Logo" />
         <label>NúcleoTech</label>
       </div>

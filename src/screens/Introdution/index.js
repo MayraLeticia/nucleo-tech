@@ -4,7 +4,7 @@ import { IntrodutionMessages } from "../../constants/header";
 import Illustration from '../../assets/images/illustration.svg'
 import Layout from "../../layout";
 import courses from "../../constants/cursos";
-import ListaCursos from "../../data/ListaCursos";
+import ListaCursos from "../../components/ListaCursos";
 
 const Introdution = () => (
     <Layout>
