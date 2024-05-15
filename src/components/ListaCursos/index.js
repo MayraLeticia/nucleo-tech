@@ -19,7 +19,8 @@ const ListaCursos = () => {
   return (
     <div className="course-list">
       {courses.map((cursos) => (
-        <Link key={cursos.id} href={"curso/"+cursos.id}>
+        //duvida aq: key={cursos.id} não te isso no component
+        <Link key={cursos.id} href={"curso/" + cursos.id}>
           <Card
             key={cursos.index}
             Icon={cursos.icon} 

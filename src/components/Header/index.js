@@ -14,7 +14,6 @@ import Button from "../Button";
 const Header = () => {
   const navigate = useNavigate();
 
-  // duvida aq: "const location = window?.location?.pathname;" oq é isso?
   const location = window?.location?.pathname;
 
   return (
@@ -25,7 +24,6 @@ const Header = () => {
       </div>
       <div className="header-options">
         <ul>
-          {/* duvida aq: não entendi essa "função"(?) abaixo */}
           {HeaderOptions.map((item) => (
             <li
               className={item.link === location && "underlined"}

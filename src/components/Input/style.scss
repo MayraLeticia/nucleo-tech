@@ -14,7 +14,7 @@
     border: 1px solid var(--color-border-gray);
 }
 
-.input:focus {
+.input:focus, .input-password-container:focus {
     outline: none;
     border: 2px solid var(--color-blue-100) !important;
 }

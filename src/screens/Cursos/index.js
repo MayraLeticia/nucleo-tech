@@ -21,7 +21,8 @@ useEffect(()=>{
   })
 })
 
-
+  //duvida aq: ta dando bug visual nessa parte, como resolver
+  //mostrar rascunho
   const handleItemClick = (index) => {
     setExpandedItem(expandedItem === index ? -1 : index);
   };

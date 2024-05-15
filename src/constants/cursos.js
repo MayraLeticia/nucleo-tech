@@ -135,3 +135,5 @@ export const courses = [
 ];
 
 export default courses;
+
+//PEDRO! tem q ser apagado
