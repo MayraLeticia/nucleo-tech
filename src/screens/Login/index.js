@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import "./style.scss";
 import LoginIllustration from "../../assets/images/login.svg";
 import { Button, Link, TextField } from "../../components";
-import users from '../../constants/users';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 // import Eye from "../../assets/icons/Eye.png";
 // import EyeOff from "../../assets/icons/EyeOff.png";
 
@@ -12,32 +13,57 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
-    const [loaded, setLoaded] = useState(false);
+=======
+import { useUser } from '../../hooks/UserContext';
 
+const Login = () => {
+    const [form, setForm] = useState({ email: '', password: '' });
+>>>>>>> 1bf56749a2b0b0789df00ba4b073f70377a87089
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const { loginUser } = useUser();
+
+<<<<<<< HEAD
     const handleLogin = async (event) => {
         event.preventDefault();
         setLoading(true);
+=======
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-        // Simulação de autenticação
+        try {
+            const response = await axios.get('http://localhost:3000/usuarios');
+            const users = response.data;
+>>>>>>> 1bf56749a2b0b0789df00ba4b073f70377a87089
 
+            const filteredUsers = users.filter((user) => user.email === form.email && user.senha === form.password);
+
+<<<<<<< HEAD
         const user = users.find(user => user.email === email);
         if (!user) {
             alert('Usuário não encontrado.');
             setLoading(false);
             return;
+=======
+            if (filteredUsers.length > 0) {
+                console.log('Usuário logado');
+                const userData = {
+                    name: filteredUsers[0].nome,
+                    email: form.email,
+                    userType: filteredUsers[0].userType
+                };
+                console.log(userData)
+                loginUser(userData);
+                navigate('/home');
+            } else {
+                setError('E-mail ou senha inválidos');
+            }
+        } catch (error) {
+            setError('Problema ao conectar-se ao servidor. Tente novamente mais tarde.');
+>>>>>>> 1bf56749a2b0b0789df00ba4b073f70377a87089
         }
-        if (user.senha !== senha) {
-            alert('Senha incorreta.');
-            setLoading(false);
-            return;
-        }
-        
-        alert('Login realizado com sucesso!');
-        navigate('/home');
-        setLoading(false);
-        setLoaded(true);
-    }
+    };
+
 
     return (
         <div className='login-container'>
@@ -53,19 +79,19 @@ const Login = () => {
                     </div>
                     <TextField 
                         id='email' 
-                        name='E-mail' 
+                        name='email' 
                         placeholder='Insira seu e-mail'
                         type='text' 
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
+                        value={form.email}
+                        onChange={e => setForm({ ...form, email: e.target.value })}
                     />
                     <TextField 
                         id='senha' 
-                        name='Senha' 
+                        name='password' 
                         placeholder='Insira sua senha'
                         type='password' 
-                        value={senha}
-                        onChange={e => setSenha(e.target.value)}
+                        value={form.password}
+                        onChange={e => setForm({ ...form, password: e.target.value })}
                     />
                     <div className="reset-password">
                         <Link children='Esqueci minha senha' href='#' />
@@ -75,9 +101,10 @@ const Login = () => {
                         Não possui cadastro? <Link children='Registre-se aqui' href='/cadastrar' />
                     </div>
                 </form>
+                {error && <p id='error'className="error-message">{error}</p>}
             </div>
         </div>
-    )
+    );
 }
 
 export default Login;
