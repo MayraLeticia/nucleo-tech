@@ -30,10 +30,6 @@ const Header = () => {
       </div>
       <div className="header-options">
         <ul>
-<<<<<<< HEAD
-=======
-   
->>>>>>> 1bf56749a2b0b0789df00ba4b073f70377a87089
           {HeaderOptions.map((item) => (
             <li
               className={item.link === location && "underlined"}

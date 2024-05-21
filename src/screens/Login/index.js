@@ -4,47 +4,23 @@ import LoginIllustration from "../../assets/images/login.svg";
 import { Button, Link, TextField } from "../../components";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-// import Eye from "../../assets/icons/Eye.png";
-// import EyeOff from "../../assets/icons/EyeOff.png";
-
-const Login = () => {
-
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-    const [loading, setLoading] = useState(false);
-=======
 import { useUser } from '../../hooks/UserContext';
 
 const Login = () => {
     const [form, setForm] = useState({ email: '', password: '' });
->>>>>>> 1bf56749a2b0b0789df00ba4b073f70377a87089
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const { loginUser } = useUser();
 
-<<<<<<< HEAD
-    const handleLogin = async (event) => {
-        event.preventDefault();
-        setLoading(true);
-=======
     const handleLogin = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.get('http://localhost:3000/usuarios');
             const users = response.data;
->>>>>>> 1bf56749a2b0b0789df00ba4b073f70377a87089
 
             const filteredUsers = users.filter((user) => user.email === form.email && user.senha === form.password);
 
-<<<<<<< HEAD
-        const user = users.find(user => user.email === email);
-        if (!user) {
-            alert('Usuário não encontrado.');
-            setLoading(false);
-            return;
-=======
             if (filteredUsers.length > 0) {
                 console.log('Usuário logado');
                 const userData = {
@@ -60,7 +36,6 @@ const Login = () => {
             }
         } catch (error) {
             setError('Problema ao conectar-se ao servidor. Tente novamente mais tarde.');
->>>>>>> 1bf56749a2b0b0789df00ba4b073f70377a87089
         }
     };
 

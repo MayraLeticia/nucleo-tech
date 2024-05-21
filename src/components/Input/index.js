@@ -1,21 +1,6 @@
 import "./style.scss"
+import { useState } from "react";
 
-// import Eye from "../../assets/icons/Eye.png";
-// import EyeOff from "../../assets/icons/EyeOff.png";
-
-// const [password, setPassword] = useState("");
-// const [type, setType] = useState('password');
-// const [icon, setIcon] = useState(eyeOff);
-
-// const handleToggle = () => {
-//   if (type==='password'){
-//      setIcon(eyeOff);
-//      setType('text')
-//   } else {
-//      setIcon(eye)
-//      setType('password')
-//   }
-// }
 
 const Input = ({id, placeholder, type, onChange, value}) => {
 
@@ -32,10 +17,12 @@ const Input = ({id, placeholder, type, onChange, value}) => {
         value={value}
         onChange={onChange}
         // onChange={(e) => setPassword(e.target.value)} //como q faz pra esse onChange funcionar com o outro
+
+        //fazer InputPassword, pra acabar essa p***aria
       />
 
-      {/* duvida aq: como ajeitar bug visual de password? fiz gambiarra */}
-      {isPassword && <img src={icon} alt="icon" />}
+    
+      {isPassword && <img src="#" alt="icon" />}
     </div>
   );
 };
